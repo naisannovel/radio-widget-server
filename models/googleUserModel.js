@@ -33,14 +33,4 @@ googleUserSchema.methods.generateJWT = function(){
     return token;
 }
 
-const validateGoogleUser = user => {
-    const schema = joi.object({
-        name: joi.string().required().min(1).max(255),
-        email: joi.string().min(5).max(255).required().email(),
-        googleId: joi.string().min(2).required()
-    })
-    return schema.validate(user)
-}
-
 module.exports.GoogleUser = model('GoogleUser',googleUserSchema);
-module.exports.validate = validateGoogleUser;

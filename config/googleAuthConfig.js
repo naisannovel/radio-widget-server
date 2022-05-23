@@ -1,14 +1,10 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const passport = require('passport');
-const { GoogleUser, validate } = require('../models/googleUserModel');
-const _ = require('lodash');
-
-const GOOGLE_CLIENT_ID = '607238272249-j1irhietdnhfigui0uvuqmaihndldru7.apps.googleusercontent.com';
-const GOOGLE_CLIENT_SECRET = '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';
+const { GoogleUser } = require('../models/googleUserModel');
 
 passport.use(new GoogleStrategy({
-    clientID: GOOGLE_CLIENT_ID,
-    clientSecret: GOOGLE_CLIENT_SECRET,
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: "/auth/google/callback"
   },
   async function (accessToken, refreshToken, profile, cb) {

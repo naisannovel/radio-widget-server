@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const jwt = require('jsonwebtoken');
 const joi = require('joi');
 
 
