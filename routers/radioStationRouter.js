@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const authorize = require('../middlewares/authorize');
-const { createStation, fetchAllStations, deleteStation } = require('../controllers/radioStationController');
+const { createStation, fetchAllStations, deleteStation, updateStation } = require('../controllers/radioStationController');
 
 
 router.route('/station')
@@ -8,7 +8,7 @@ router.route('/station')
     .post(authorize, createStation)
 
 router.route('/station/:id')
-    // .put()
+    .put(authorize, updateStation)
     .delete(authorize,deleteStation)
 
 module.exports = router;

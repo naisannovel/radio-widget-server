@@ -20,13 +20,21 @@ module.exports.createStation = async (req,res)=>{
       }
 }
 
-// get
+// read
 module.exports.fetchAllStations = async (req,res)=>{
-    const result = await Station.find({});
+    const result = await Station.find({}).select({ _id: 1, name: 1, frequency: 1 });
     res.status(200).send(result);
   }
+  
+  // update
+  module.exports.updateStation = async (req,res)=>{
+    const id = req.params.id;
+    const data = req.body;
+    const result = await Station.findByIdAndUpdate(id,data,{ new: true }).select({ _id: 1, name: 1, frequency: 1 });
+    return res.status(200).send(result)
+  }
 
-// delete station
+// delete
 module.exports.deleteStation = async (req,res)=>{
   const id = req.params.id;
   const result = await Station.findByIdAndDelete(id);
