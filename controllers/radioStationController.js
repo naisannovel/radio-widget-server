@@ -37,7 +37,7 @@ module.exports.fetchAllStations = async (req,res)=>{
 // delete
 module.exports.deleteStation = async (req,res)=>{
   const id = req.params.id;
-  const result = await Station.findByIdAndDelete(id);
+  const result = await Station.findByIdAndDelete(id).select({ _id: 1, name: 1, frequency: 1 });
   if (!result) return res.status(404).send({ message: error.details[0].message });
   res.status(200).send(result);
 }
