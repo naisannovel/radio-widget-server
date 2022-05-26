@@ -1,17 +1,14 @@
 const jwt = require('jsonwebtoken');
 
 module.exports = (req,res,next) =>{
-    let token = req.cookies.token;
-    
+    console.log(token);
     if(!token) return res.status(401).send('access denied, no token provide');
+    token = token.split(' ')[1].trim();
+
     try{
-        const { _id, email } = jwt.verify(token,process.env.JWT_SECRET_KEY);
-        if(_id && email){
-            req.user = { _id, email };
-            next();
-        }else{
-            return res.status(401).send('invalid token');
-        }
+        const decoded = jwt.verify(token,process.env.JWT_SECRET_KEY);
+        req.user = decoded;
+        next();
     }catch(err){
         return res.status(401).send('invalid token');
     }
