@@ -23,8 +23,7 @@ module.exports.signUp = async (req, res) => {
     const token = user.generateJWT()
     try{
         const result = await user.save()
-        res.cookie('token', token);
-        res.sendStatus(200);
+        res.status(200).send({token});
     }catch(err){
         return res.status(400).send(err)
     }
@@ -41,6 +40,5 @@ module.exports.login = async (req,res)=>{
 
     const token = user.generateJWT();
 
-    res.cookie('token', token)
-    return res.sendStatus(200);
+    res.status(200).send({token});
 }
