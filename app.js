@@ -22,6 +22,7 @@ app.use(cors({
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   }));
+  app.enable('trust proxy');
 
 // Auth Route
 app.use("/auth", googleAuthRouter)
