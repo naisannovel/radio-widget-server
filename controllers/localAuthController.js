@@ -13,7 +13,7 @@ module.exports.signUp = async (req, res) => {
         email: req.body.email
     })
 
-    if (user) return res.status(400).send({ message: error.details[0].message });
+    if (user) return res.status(400).send({ message: "user already exist" });
 
     user = new LocalUser(value);
 
