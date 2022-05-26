@@ -6,7 +6,7 @@ require('../config/googleAuthConfig');
 router.get('/google',passport.authenticate('google',{scope:['profile','email']}))
 
 router.get('/google/callback',passport.authenticate('google',{ session: false }), (req,res)=>{
-    res.redirect(`http://localhost:3000/google-oauth/${req?.user}`); 
+    res.redirect(`https://radio-widget-bd.web.app/google-oauth/${req?.user}`); 
 })
 
 module.exports = router;
