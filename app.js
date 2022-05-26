@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(compression());
 app.use(cors({
-    origin: "https://radio-widget-bd.web.app",
+    origin: "http://localhost:3000",
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   }));
