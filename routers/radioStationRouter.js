@@ -9,6 +9,6 @@ router.route('/station')
 
 router.route('/station/:id')
     .put(authorize, updateStation)
-    .delete(authorize,deleteStation)
+    .delete(authorize, deleteStation)
 
 module.exports = router;
