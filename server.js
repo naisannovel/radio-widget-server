@@ -1,7 +1,9 @@
 const app = require('./app');
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.DEVELOPMENT_DB)
+const DB = process.env.PRODUCTION_DB.replace('<PASSWORD>', process.env.DB_PASSWORD);
+
+mongoose.connect(DB)
         .then(()=> console.log('MongoDB connected successfully'))
         .catch(err => console.log('MongoDB connection failed'));
 
