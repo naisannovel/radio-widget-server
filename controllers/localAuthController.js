@@ -25,7 +25,7 @@ module.exports.signUp = async (req, res) => {
         const result = await user.save()
         // res.status(200).send({token});
         // console.log(token);
-        res.cookie('token',token, { maxAge: 60*60*1000, httpOnly: true })
+        res.cookie('token',token, { maxAge: 60*60*1000, httpOnly: true, secure: true })
         res.sendStatus(200);
     }catch(err){
         return res.status(400).send(err)
