@@ -23,10 +23,7 @@ module.exports.signUp = async (req, res) => {
     const token = user.generateJWT()
     try{
         const result = await user.save()
-        // res.status(200).send({token});
-        // console.log(token);
-        res.cookie('token',token, { maxAge: 60*60*1000, sameSite: "none", secure: true })
-        res.sendStatus(200);
+        res.status(200).send({token});
     }catch(err){
         return res.status(400).send(err)
     }
